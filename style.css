@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --bg-color: rgb(8, 12, 23);
+    --primary-color: rgb(34, 193, 195);
+    --secondary-color: rgb(247, 184, 49);
+}
+body {
+    background-color: var(--bg-color);
+    font-family: sans-serif;
+}
+main {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+.btn-container {
+    --padding-inline: 25px;
+    --padding-block: 8px;
+    --font-size: 18px;
+    --border-radius: 4px;
+    --border-size: 1px;
+    width: fit-content;
+    padding: var(--border-size); /*outter border size*/
+    margin: auto;
+    background: var(--primary-color);
+    background: linear-gradient(
+        71deg,
+        var(--primary-color) 0%,
+        var(--secondary-color) 22%,
+        var(--primary-color) 50%,
+        var(--secondary-color) 72%,
+        var(--primary-color) 100%
+    );
+    background-size: 500%;
+    border-radius: var(--border-radius);
+    animation: bg-animation 3s infinite linear;
+}
+.btn-inner-container {
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    transition: 0.3s background-color ease-in-out;
+}
+.btn {
+    color: transparent;
+    padding-inline: var(--padding-inline);
+    padding-block: var(--padding-block);
+    font-weight: 500;
+    letter-spacing: 0px;
+    font-size: var(--font-size);
+    background: var(--primary-color);
+    background: linear-gradient(
+        71deg,
+        var(--primary-color) 0%,
+        var(--secondary-color) 22%,
+        var(--primary-color) 50%,
+        var(--secondary-color) 72%,
+        var(--primary-color) 100%
+    );
+    background-size: calc((100% + var(--padding-inline)) * 5);
+    background-clip: text;
+    border: none;
+    border-radius: var(--border-radius);
+    animation: bg-animation 3s infinite linear;
+    transition: color 0.2s ease-in-out;
+}
+
+.btn-inner-container:has(.btn:hover, .btn:focus) {
+    background-color: transparent;
+}
+.btn:hover,
+.btn:focus {
+    cursor: pointer;
+    color: var(--bg-color);
+}
+
+@keyframes bg-animation {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: calc(200% / 3);
+    }
+}
